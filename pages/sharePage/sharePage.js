@@ -6,14 +6,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+      user:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    var that = this;
+    if (options.id !== undefined){
+      let query = new wx.BaaS.Query();
+      query.compare("checkId", "=", options.id)
+      let Product = new wx.BaaS.TableObject("36224")
+      Product.setQuery(query).find().then(res => {
+        console.log("qry", res)
+        if (res.data.meta.total_count == 0) {  //用户不存在时  提示用户注册授权
+
+        } else {//用户存在  然后直接跳转
+          app.globalData.userInfo = res.data.objects[0]
+          that.setData({
+            user: res.data.objects[0].nickName
+          })
+          console.log(app.globalData.userInfo )
+        }
+      }, err => {
+        // err
+      })
+    }
+   
   },
 
   /**
