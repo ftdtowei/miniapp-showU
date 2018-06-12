@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/home/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#efefef",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "TouchUI",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 10000
+  },
+  "theme": {
+    "theme-color": "#3399ff"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "selectedIconPath": "static/images/list.png",
+        "iconPath": "static/images/list-no.png",
+        "pagePath": "pages/home/index",
+        "text": ""
+      },
+      {
+        "selectedIconPath": "static/images/map.png",
+        "iconPath": "static/images/map-no.png",
+        "pagePath": "pages/home/index",
+        "text": ""
+      },
+      {
+        "selectedIconPath": "static/images/user.png",
+        "iconPath": "static/images/user-no.png",
+        "pagePath": "pages/home/index",
+        "text": ""
+      }
+    ]
+  }
+}

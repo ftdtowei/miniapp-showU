@@ -1,2 +1,0 @@
-<!--pages/firstGuide.wxml-->
-<button open-type="getUserInfo" bindgetuserinfo="userInfoHandler">用户授权</button>
