@@ -30,3 +30,22 @@
 .buttonContent {
   padding: 50px;
 }
+.content-in-box {
+  background: #fff;
+  height: 100px;
+  width: 200px;
+  text-align: center;
+  margin-top: 50%;
+  border-radius: 4px;
+  padding-top: 30px;
+  color: aquamarine;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.nav_bar {
+  background-color: #fff;
+}
+.set {
+  color: #0dc1ae;
+  font-size: 14px;
+}

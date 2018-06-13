@@ -23,19 +23,19 @@
         "selectedIconPath": "static/images/list.png",
         "iconPath": "static/images/list-no.png",
         "pagePath": "pages/home/index",
-        "text": ""
+        "text": "发现"
       },
       {
         "selectedIconPath": "static/images/edit.png",
         "iconPath": "static/images/edit-no.png",
         "pagePath": "pages/home/add",
-        "text": ""
+        "text": "发布"
       },
       {
         "selectedIconPath": "static/images/user.png",
         "iconPath": "static/images/user-no.png",
         "pagePath": "pages/home/user",
-        "text": ""
+        "text": "我的"
       }
     ]
   }

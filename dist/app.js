@@ -13,6 +13,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = App({
   globalData: {},
   onLaunch: function onLaunch() {
+    require('./static/utils/sdk-v1.4.0.js');
+    var clientID = '86da1b9ae3882fc5c232';
+    wx.BaaS.init(clientID);
     _system2.default.attachInfo();
   },
   onShow: function onShow() {},

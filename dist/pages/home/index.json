@@ -1,8 +1,11 @@
 {
   "usingComponents": {
-    "ui-star": "../../packages/touchui-wx-components/ui-star/dist/index"
+    "ui-nav-bar": "../../packages/touchui-wx-components/ui-nav-bar/dist/index",
+    "ui-segment": "../../packages/touchui-wx-components/ui-segment/dist/index",
+    "ui-segment-item": "../../packages/touchui-wx-components/ui-segment-item/dist/index",
+    "ui-mask": "../../packages/touchui-wx-components/ui-mask/dist/index"
   },
-  "navigationBarTitleText": "首页",
-  "backgroundColor": "#F4F4F4",
+  "navigationBarTitleText": "全局segment",
+  "navigationStyle": "custom",
   "navigationBarTextStyle": "black"
 }

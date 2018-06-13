@@ -26,25 +26,28 @@ export default {
           selectedIconPath: 'static/images/list.png',
           iconPath: 'static/images/list-no.png',
           pagePath: 'pages/home/index',
-          text: ''
+          text: '发现'
         },
         {
           selectedIconPath: 'static/images/edit.png',
           iconPath: 'static/images/edit-no.png',
           pagePath: 'pages/home/add',
-          text: ''
+          text: '发布'
         },
         {
           selectedIconPath: 'static/images/user.png',
           iconPath: 'static/images/user-no.png',
           pagePath: 'pages/home/user',
-          text: ''
+          text: '我的'
         }
       ]
     }
   },
   globalData: {},
   onLaunch() {
+    require('./static/utils/sdk-v1.4.0')
+    let clientID = '86da1b9ae3882fc5c232'
+    wx.BaaS.init(clientID)
     system.attachInfo()
   },
   onShow() {},

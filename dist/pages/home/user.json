@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "user"
+  "usingComponents": {
+    "ui-blur": "../../packages/touchui-wx-components/ui-blur/dist/index"
+  },
+  "backgroundColor": "#F4F4F4",
+  "navigationBarTextStyle": "black"
 }

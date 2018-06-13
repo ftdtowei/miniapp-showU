@@ -1,30 +1,146 @@
 <template>
   <view>
-    <view class="starContent" wx:if="{{ isShow }}">
-      <ui-star></ui-star>
+    <ui-nav-bar slot="nav-bar" class="nav_bar" custom-style="{{ {backgroundColor:'#fff'} }}">
+      <ui-row height="46">
+        <ui-col vertical-align="middle">
+          <ui-segment bindchange="changTab" item-style="{{itemStyle}}" active-item-style="{{activeItemStyle}}">
+            <ui-segment-item>
+              好友去哪
+            </ui-segment-item>
+            <ui-segment-item>
+              我的好友
+            </ui-segment-item>
+          </ui-segment>
+        </ui-col>
+        <ui-col vertical-align="middle" align="center" width="80" >
+        </ui-col>
+      </ui-row>
+    </ui-nav-bar>
+    <!-- <view style="height:{{NAV_HEIGHT}}"></view> -->
+    <view class="tabContent" wx:if="{{contentshow === 0}}">
+      <view class="content_list">
+        <view wx:for="{{ items0 }}" class="{{index % 2 == 0 ? 'grey-bg':''}}">
+          {{ item }}
+        </view>
+      </view>
     </view>
-
-    <view class="buttonContent">
-      <button type="primary" bindtap="starShow">创建评分控件</button>
-    </view> 
+    <view class="tabContent" wx:if="{{contentshow === 1}}">
+      <view class="content_list">
+        <view wx:for="{{ items1 }}" class="{{index % 2 == 0 ? 'grey-bg':''}}">
+          {{ item }}
+        </view>
+      </view>
+    </view>
+<ui-mask show="{{isShow}}"  hide-on-tap="{{false}}" hide-delay="500">
+    <view class="content">
+       <view class="content-in-box">
+         <button open-type="getUserInfo" data-show="{{ false }}" bindgetuserinfo="authInfo" type="success">授权获取信息</button>
+       </view>
+       
+    </view>
+</ui-mask>  
   </view>
 </template>
 
 <script>
 export default {
   config: {
-    navigationBarTitleText: '首页',
-    backgroundColor: '#F4F4F4',
-    navigationBarTextStyle: 'black'
+    "navigationBarTitleText": "全局segment",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle":"black"
   },
   data: {
-    isShow:false
+    isShow:false,
+     NAV_HEIGHT:wx.STATUS_BAR_HEIGHT+wx.DEFAULT_HEADER_HEIGHT+'px',
+    contentshow: 0,
+    items0: [],
+    items1: [],
+    setShow: false,
+    itemStyle:{
+      'border-color':'#0dc1ae',
+      'color':'#0dc1ae',
+      'font-size':'14px'
+    },
+    activeItemStyle:{
+      'color':'#fff',
+      'background-color': '#0dc1ae'
+    }
   },
-  starShow () {
-    this.setData({ 
-      isShow: true
-    })
-  }
+  onShow (){
+      var self = this;
+    //判断用户是否已授权
+      wx.BaaS.login(false).then(res => {
+          // 登录成功
+          let query = new wx.BaaS.Query()
+
+          // 设置查询条件（比较、字符串包含、组合等）
+          query.compare('openid', '=', res.openid)
+
+          // 应用查询对象
+          let exist = new wx.BaaS.TableObject(40380)
+          exist.setQuery(query).find().then(res => {
+            // success
+            console.log('qry userinfo',res)
+            var data = res.data;
+            if(data.objects.length == 0 ){ //用户未授权   引导用户授权
+              self.setData({
+                isShow:true
+              })
+            }else{
+              wx.BaaS.login(true).then(res => {
+                // 登录成功
+                var appInstance = getApp()
+                appInstance.globalData.user = res;
+                appInstance.globalData.url = res.avatarUrl;
+              }, res => {
+                // 登录失败
+              })
+            }
+
+          }, err => {
+            // err
+          })
+        }, res => {
+          // 登录失败
+        })
+
+  },
+   authInfo (data) {
+    var self = this;
+     wx.BaaS.handleUserInfo(data).then(res => {
+        // res 包含用户完整信息，详见下方描述
+        console.log(res)
+        let Exist = new wx.BaaS.TableObject(40380)
+        let exist = Exist.create()
+
+        // 设置方式一
+        let info = {
+          openid: res.openid
+        }
+
+        exist.set(info).save().then(res => {
+          // success
+          wx.BaaS.login(true).then(res => {
+              var appInstance = getApp()
+              appInstance.globalData.user = res;
+                appInstance.globalData.url = res.avatarUrl;
+              
+            }, res => {
+              // 登录失败
+            })
+           let show = data.currentTarget.dataset.show
+            self.setData({
+              isShow: show
+            })
+        }, err => {
+          // err
+        })
+      }, res => {
+        // **res 有两种情况**：用户拒绝授权，res 包含基本用户信息：id、openid、unionid；其他类型的错误，如网络断开、请求超时等，将返回 Error 对象（详情见下方注解）
+        // *Tips*：如果你的业务需要用户必须授权才可进行，由于微信的限制，10 分钟内不可再次弹出授权窗口，此时可以调用 [`wx.openSetting`](https://mp.weixin.qq.com/debug/wxadoc/dev/api/setting.html) 要求用户提供授权
+      })
+       
+    }
 }
 </script>
 
@@ -38,4 +154,24 @@ export default {
 .buttonContent{
   padding:50px;
 }
+.content-in-box{
+  background: #fff;
+  height: 100px;
+  width: 200px;
+  text-align: center;
+  margin-top: 50%;
+  border-radius: 4px;
+  padding-top:30px;
+  color:aquamarine;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.nav_bar{
+  background-color: #fff;
+}
+.set{
+  color:#0dc1ae;
+  font-size:14px
+}
+
 </style>
