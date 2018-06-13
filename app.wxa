@@ -1,56 +1,55 @@
 <template>
-  <view>
-    <page></page>
-  </view>
+  <page></page>
 </template>
 
 <script>
-  import system from './static/utils/system'
-  export default {
-    config: {
-      usingComponents: {
-      },
-      pages: [
-        'pages/home/index'
-      ],
-      window: {
-        backgroundTextStyle: 'dark',
-        backgroundColor: '#efefef',
-        navigationBarBackgroundColor: '#ffffff',
-        navigationBarTitleText: 'TouchUI',
-        navigationBarTextStyle: 'black'
-      },
-      networkTimeout: {
-        request: 10000
-      },
-      theme: {
-        'theme-color': '#3399ff'
-      },
-      tabBar: {
-        "list": [{  
-          "selectedIconPath": "static/images/list.png",  
-          "iconPath": "static/images/list-no.png",  
-          "pagePath": "pages/home/index",  
-          "text": ""  
-        }, {  
-          "selectedIconPath": "static/images/map.png",  
-          "iconPath": "static/images/map-no.png",  
-          "pagePath": "pages/home/index",  
-          "text": ""  
-        }, {  
-          "selectedIconPath": "static/images/user.png",  
-          "iconPath": "static/images/user-no.png",  
-          "pagePath": "pages/home/index",  
-          "text": ""  
-        }] }
+import system from './static/utils/system'
+export default {
+  config: {
+    usingComponents: {},
+    pages: ['pages/home/index', 'pages/home/add', 'pages/home/user'],
+    window: {
+      backgroundTextStyle: 'dark',
+      backgroundColor: '#efefef',
+      navigationBarBackgroundColor: '#ffffff',
+      navigationBarTitleText: 'TouchUI',
+      navigationBarTextStyle: 'black'
     },
-    globalData: { },
-    onLaunch () { 
-      system.attachInfo()
+    networkTimeout: {
+      request: 10000
     },
-    onShow () { },
-    onHide () { }
-  }
+    theme: {
+      'theme-color': '#3399ff'
+    },
+    tabBar: {
+      list: [{
+          selectedIconPath: 'static/images/list.png',
+          iconPath: 'static/images/list-no.png',
+          pagePath: 'pages/home/index',
+          text: ''
+        },
+        {
+          selectedIconPath: 'static/images/edit.png',
+          iconPath: 'static/images/edit-no.png',
+          pagePath: 'pages/home/add',
+          text: ''
+        },
+        {
+          selectedIconPath: 'static/images/user.png',
+          iconPath: 'static/images/user-no.png',
+          pagePath: 'pages/home/user',
+          text: ''
+        }
+      ]
+    }
+  },
+  globalData: {},
+  onLaunch() {
+    system.attachInfo()
+  },
+  onShow() {},
+  onHide() {}
+}
 </script>
 
 <style lang="less">

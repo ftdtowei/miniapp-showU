@@ -1,0 +1,15 @@
+<template>
+  <view>user</view>
+</template>
+
+<script>
+export default {
+  config: {
+    navigationBarTitleText: 'user'
+  },
+  data: {}
+}
+</script>
+
+<style lang="less">
+</style>

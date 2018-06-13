@@ -1,6 +1,8 @@
 {
   "pages": [
-    "pages/home/index"
+    "pages/home/index",
+    "pages/home/add",
+    "pages/home/user"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -24,15 +26,15 @@
         "text": ""
       },
       {
-        "selectedIconPath": "static/images/map.png",
-        "iconPath": "static/images/map-no.png",
-        "pagePath": "pages/home/index",
+        "selectedIconPath": "static/images/edit.png",
+        "iconPath": "static/images/edit-no.png",
+        "pagePath": "pages/home/add",
         "text": ""
       },
       {
         "selectedIconPath": "static/images/user.png",
         "iconPath": "static/images/user-no.png",
-        "pagePath": "pages/home/index",
+        "pagePath": "pages/home/user",
         "text": ""
       }
     ]

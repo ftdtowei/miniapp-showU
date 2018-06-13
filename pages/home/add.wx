@@ -1,0 +1,15 @@
+<template>
+  <view>map</view>
+</template>
+
+<script>
+export default {
+  config: {
+    navigationBarTitleText: 'add'
+  },
+  data: {}
+}
+</script>
+
+<style lang="less">
+</style>
