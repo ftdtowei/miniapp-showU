@@ -1,5 +1,5 @@
 <template>
-  <view>map</view>
+  <view>add</view>
 </template>
 
 <script>
