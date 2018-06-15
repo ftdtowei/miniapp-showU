@@ -5,7 +5,9 @@
 <script>
 export default {
   config: {
-    navigationBarTitleText: 'add'
+    "navigationBarTitleText": "新增",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle":"black"
   },
   data: {}
 }

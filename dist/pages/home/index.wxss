@@ -42,10 +42,6 @@
   padding-left: 10px;
   padding-right: 10px;
 }
-.nav_bar {
-  background-color: #fff;
-}
-.set {
-  color: #0dc1ae;
-  font-size: 14px;
+.swiper-content {
+  overflow: scroll;
 }

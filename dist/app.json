@@ -2,7 +2,8 @@
   "pages": [
     "pages/home/index",
     "pages/home/add",
-    "pages/home/user"
+    "pages/home/user",
+    "pages/activity/detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",

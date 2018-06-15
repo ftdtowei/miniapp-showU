@@ -1,72 +1,134 @@
 <template>
-  <view>
-    <ui-nav-bar slot="nav-bar" class="nav_bar" custom-style="{{ {backgroundColor:'#fff'} }}">
-      <ui-row height="46">
-        <ui-col vertical-align="middle">
-          <ui-segment bindchange="changTab" item-style="{{itemStyle}}" active-item-style="{{activeItemStyle}}">
-            <ui-segment-item>
-              好友去哪
-            </ui-segment-item>
-            <ui-segment-item>
-              我的好友
-            </ui-segment-item>
-          </ui-segment>
-        </ui-col>
-        <ui-col vertical-align="middle" align="center" width="80" >
-        </ui-col>
-      </ui-row>
-    </ui-nav-bar>
-    <!-- <view style="height:{{NAV_HEIGHT}}"></view> -->
-    <view class="tabContent" wx:if="{{contentshow === 0}}">
-      <view class="content_list">
-        <view wx:for="{{ items0 }}" class="{{index % 2 == 0 ? 'grey-bg':''}}">
-          {{ item }}
+<view>
+  <ui-tabs index="{{ current1 }}" bindchange="handleChange1">
+      <ui-tab>热门活动</ui-tab>
+      <ui-tab>已参加</ui-tab>
+  </ui-tabs>
+  <swiper  current="{{ current1 }}"  bindchange="handleContentChange1" style="height:{{swiperHeight}}">
+      <swiper-item class="swiper-content">
+         <scroll-view scroll-y="{{true}}" >
+
+           <view class="collect" wx:for="{{list3}}">
+                    <ui-row height="40">
+                        <ui-col vertical-align="middle"  align="center" width="60">
+                            <image
+                                   src="{{ item.head }}"
+                                   style="width:30px;height:30px;"
+                                   ></image>
+                        </ui-col>
+                        <ui-col vertical-align="middle">
+                            <view class="name">{{ item.name }}</view>
+                        </ui-col>
+                        <ui-col vertical-align="middle" align="right" space-right="15">
+                            <view class="time">{{ item.time }}</view>
+                        </ui-col>
+                    </ui-row>
+                    <ui-row height="80" bindtap="inToDetail">
+                        <ui-col vertical-align="middle" align="center" width="80">
+                            <image
+                                   src="{{ item.img }}"
+                                   style="width:50px;height:50px;"
+                                   ></image>
+                        </ui-col>
+                        <ui-col vertical-align="middle" space-right="15">
+                            <view class="content">{{ item.text }}</view>
+                        </ui-col>
+                    </ui-row>
+                </view>
+         </scroll-view>
+      </swiper-item>
+       <swiper-item class="swiper-content">
+         <scroll-view scroll-y="{{true}}" >
+
+           <view class="collect" wx:for="{{list3}}">
+                    <ui-row height="40">
+                        <ui-col vertical-align="middle"  align="center" width="60">
+                            <image
+                                   src="{{ item.head }}"
+                                   style="width:30px;height:30px;"
+                                   ></image>
+                        </ui-col>
+                        <ui-col vertical-align="middle">
+                            <view class="name">{{ item.name }}</view>
+                        </ui-col>
+                        <ui-col vertical-align="middle" align="right" space-right="15">
+                            <view class="time">{{ item.time }}</view>
+                        </ui-col>
+                    </ui-row>
+                    <ui-row height="80">
+                        <ui-col vertical-align="middle" align="center" width="80">
+                            <image
+                                   src="{{ item.img }}"
+                                   style="width:50px;height:50px;"
+                                   ></image>
+                        </ui-col>
+                        <ui-col vertical-align="middle" space-right="15">
+                            <view class="content">{{ item.text }}</view>
+                        </ui-col>
+                    </ui-row>
+                </view>
+         </scroll-view>
+      </swiper-item>
+  </swiper>
+
+    <ui-mask show="{{isShow}}"  hide-on-tap="{{false}}" hide-delay="500">
+        <view class="content">
+          <view class="content-in-box">
+            <button open-type="getUserInfo" data-show="{{ false }}" bindgetuserinfo="authInfo" type="success">授权获取信息</button>
+          </view>
+          
         </view>
-      </view>
-    </view>
-    <view class="tabContent" wx:if="{{contentshow === 1}}">
-      <view class="content_list">
-        <view wx:for="{{ items1 }}" class="{{index % 2 == 0 ? 'grey-bg':''}}">
-          {{ item }}
-        </view>
-      </view>
-    </view>
-<ui-mask show="{{isShow}}"  hide-on-tap="{{false}}" hide-delay="500">
-    <view class="content">
-       <view class="content-in-box">
-         <button open-type="getUserInfo" data-show="{{ false }}" bindgetuserinfo="authInfo" type="success">授权获取信息</button>
-       </view>
-       
-    </view>
-</ui-mask>  
+    </ui-mask>  
+
   </view>
 </template>
 
 <script>
 export default {
   config: {
-    "navigationBarTitleText": "全局segment",
+    "navigationBarTitleText": "活动发现",
     "navigationStyle": "custom",
     "navigationBarTextStyle":"black"
   },
   data: {
     isShow:false,
-     NAV_HEIGHT:wx.STATUS_BAR_HEIGHT+wx.DEFAULT_HEADER_HEIGHT+'px',
-    contentshow: 0,
-    items0: [],
-    items1: [],
-    setShow: false,
-    itemStyle:{
-      'border-color':'#0dc1ae',
-      'color':'#0dc1ae',
-      'font-size':'14px'
-    },
-    activeItemStyle:{
-      'color':'#fff',
-      'background-color': '#0dc1ae'
-    }
+    current1:0,
+    list3: [
+            { head: 'http://images.uileader.com/20180313/b4af4e36-a677-48b8-9caa-b741582f6c12.png', name: '前端早读课', time: '2017/10/4', img: 'http://images.uileader.com/20180313/9ab8ce19-5a38-4756-9be1-fd598a4dea83.png', text: '【视频】基于Recat Native的跨三端技术实践' },
+            { head: 'http://images.uileader.com/20180313/be889b2f-7f8e-4e2f-9ae5-2e0bd3d6c85d.png', name: '极乐技术社区', time: '2017/9/5', img: 'http://images.uileader.com/20180313/76d9228c-5779-4416-8f05-2cddb200222a.png', text: '【教程】微信小程序--蓝牙连接开发总结' },
+            { head: 'http://images.uileader.com/20180313/16224b1e-bd33-482e-bde5-d416723a2970.png', name: '前端人', time: '2017/8/20', img: 'http://images.uileader.com/20180313/41448b31-1f65-4c3d-be58-e7d66601d1c0.png', text: ' 如丝般顺滑：CSS3实现60帧的动画' },
+            { head: 'http://images.uileader.com/20180313/16224b1e-bd33-482e-bde5-d416723a2970.png', name: '前端人', time: '2017/8/20', img: 'http://images.uileader.com/20180313/41448b31-1f65-4c3d-be58-e7d66601d1c0.png', text: ' 如丝般顺滑：CSS3实现60帧的动画' },
+
+            { head: 'http://images.uileader.com/20180313/16224b1e-bd33-482e-bde5-d416723a2970.png', name: '前端人', time: '2017/8/20', img: 'http://images.uileader.com/20180313/41448b31-1f65-4c3d-be58-e7d66601d1c0.png', text: ' 如丝般顺滑：CSS3实现60帧的动画' },
+            
+            { head: 'http://images.uileader.com/20180313/16224b1e-bd33-482e-bde5-d416723a2970.png', name: '前端人', time: '2017/8/20', img: 'http://images.uileader.com/20180313/41448b31-1f65-4c3d-be58-e7d66601d1c0.png', text: ' 如丝般顺滑：CSS3实现60帧的动画' },
+            
+            { head: 'http://images.uileader.com/20180313/16224b1e-bd33-482e-bde5-d416723a2970.png', name: '前端人', time: '2017/8/20', img: 'http://images.uileader.com/20180313/41448b31-1f65-4c3d-be58-e7d66601d1c0.png', text: ' 如丝般顺滑：CSS3实现60帧的动画' },
+            
+            { head: 'http://images.uileader.com/20180313/16224b1e-bd33-482e-bde5-d416723a2970.png', name: '前端人', time: '2017/8/20', img: 'http://images.uileader.com/20180313/41448b31-1f65-4c3d-be58-e7d66601d1c0.png', text: ' 如丝般顺滑：CSS3实现60帧的动画' },
+            
+            { head: 'http://images.uileader.com/20180313/16224b1e-bd33-482e-bde5-d416723a2970.png', name: '前端人', time: '2017/8/20', img: 'http://images.uileader.com/20180313/41448b31-1f65-4c3d-be58-e7d66601d1c0.png', text: ' 如丝般顺滑：CSS3实现60帧的动画' },
+            
+            { head: 'http://images.uileader.com/20180313/16224b1e-bd33-482e-bde5-d416723a2970.png', name: '前端人', time: '2017/8/20', img: 'http://images.uileader.com/20180313/41448b31-1f65-4c3d-be58-e7d66601d1c0.png', text: ' 如丝般顺滑：CSS3实现60帧的动画' },
+            
+        ],
+      swiperHeight:'456px'
+     
+  },
+  onLoad(){
+    var height = ""
+    wx.getSystemInfo({
+        success: function(res) {
+          height = res.windowHeight - 46
+        }
+      })
+
+    this.setData({
+        swiperHeight:height+'px'
+      })
   },
   onShow (){
+
       var self = this;
     //判断用户是否已授权
       wx.BaaS.login(false).then(res => {
@@ -140,6 +202,23 @@ export default {
         // *Tips*：如果你的业务需要用户必须授权才可进行，由于微信的限制，10 分钟内不可再次弹出授权窗口，此时可以调用 [`wx.openSetting`](https://mp.weixin.qq.com/debug/wxadoc/dev/api/setting.html) 要求用户提供授权
       })
        
+    },
+     handleContentChange1 (e) {
+        let current = e.detail.current
+        this.setData({
+          current1:current
+        })
+    },
+    handleChange1 (e) {
+        let index = e.detail.index
+        this.setData({
+          current1:index
+        })
+    },
+    inToDetail(e){
+        wx.navigateTo({
+          url: '/pages/activity/detail?id='
+        })
     }
 }
 </script>
@@ -166,12 +245,9 @@ export default {
   padding-left: 10px;
   padding-right: 10px;
 }
-.nav_bar{
-  background-color: #fff;
+.swiper-content{
+  overflow: scroll;
 }
-.set{
-  color:#0dc1ae;
-  font-size:14px
-}
+
 
 </style>

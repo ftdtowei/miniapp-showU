@@ -1,0 +1,5 @@
+<view>
+
+  <image src="http://www.72swk.com/data/uploads/2015/08/18/144556346955d2dc4fa45ef.jpg" style="height:{{imgHeight}}px" />
+
+</view>

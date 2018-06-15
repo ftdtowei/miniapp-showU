@@ -13,11 +13,11 @@ var _StringHelper = require('./StringHelper.js');
 
 var _StringHelper2 = _interopRequireDefault(_StringHelper);
 
-var _index = require('../../lodash.merge/index.js');
+var _index = require('../lodash.merge/index.js');
 
 var _index2 = _interopRequireDefault(_index);
 
-var _index3 = require('../../lodash.trim/index.js');
+var _index3 = require('../lodash.trim/index.js');
 
 var _index4 = _interopRequireDefault(_index3);
 

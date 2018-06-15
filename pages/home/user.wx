@@ -10,7 +10,7 @@
             style="width:60px;height:60px"></image>
           </view>
           <view class="name">
-            TOUCH UI</ui-icon>
+            {{className}}
           </view>
         </view>
       </ui-blur>
@@ -42,10 +42,12 @@ export default {
   },
   onShow(){
     var appInstance = getApp()
+    let user = appInstance.globalData.user
     let avatar = appInstance.globalData.url
-    console.log(avatar)
+    console.log(user)
     this.setData({
-      url:avatar
+      url:avatar,
+      className:appInstance.globalData.user.nickName
     })
   }
 
@@ -72,6 +74,7 @@ export default {
       }
       &.name{
         padding: 20px 0;
+        color: #000;
       }
       .ui-view{
         display: inline-block;

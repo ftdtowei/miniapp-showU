@@ -40,6 +40,7 @@
 }
 .content_wrap .top_content view.name {
   padding: 20px 0;
+  color: #000;
 }
 .content_wrap .top_content view .ui-view {
   display: inline-block;

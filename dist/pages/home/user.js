@@ -19,10 +19,12 @@ exports.default = Page({
   onReady: function onReady() {},
   onShow: function onShow() {
     var appInstance = getApp();
+    var user = appInstance.globalData.user;
     var avatar = appInstance.globalData.url;
-    console.log(avatar);
+    console.log(user);
     this.setData({
-      url: avatar
+      url: avatar,
+      className: appInstance.globalData.user.nickName
     });
   }
 });

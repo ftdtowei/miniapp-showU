@@ -1,39 +1,83 @@
 <view>
-  <ui-nav-bar slot="nav-bar" class="nav_bar" custom-style="{{ {backgroundColor:'#fff'} }}" _pid="{{_pid}}">
-    <view class="ui-row" style="height:46px;">
-      <view class="ui-col valign-middle" style="">
-        <view class="ui-col-content valign-middle">
-          <ui-segment bindchange="changTab" item-style="{{itemStyle}}" active-item-style="{{activeItemStyle}}" _pid="{{_pid}}">
-            <ui-segment-item _pid="{{_pid}}">
-              好友去哪
-            </ui-segment-item>
-            <ui-segment-item _pid="{{_pid}}">
-              我的好友
-            </ui-segment-item>
-          </ui-segment>
+  <ui-tabs index="{{ current1 }}" bindchange="handleChange1" _pid="{{_pid}}">
+    <ui-tab _pid="{{_pid}}">热门活动</ui-tab>
+    <ui-tab _pid="{{_pid}}">已参加</ui-tab>
+  </ui-tabs>
+  <swiper current="{{ current1 }}" bindchange="handleContentChange1" style="height:{{swiperHeight}}">
+    <swiper-item class="swiper-content">
+      <scroll-view scroll-y="{{true}}">
+
+        <view class="collect" wx:for="{{list3}}">
+          <view class="ui-row" style="height:40px;">
+            <view class="ui-col ui-col-align-center align-center valign-middle" style="flex:0 0 60px;">
+              <view class="ui-col-content align-center valign-middle">
+                <image src="{{ item.head }}" style="width:30px;height:30px;" />
+              </view>
+            </view>
+            <view class="ui-col valign-middle" style="">
+              <view class="ui-col-content valign-middle">
+                <view class="name">{{ item.name }}</view>
+              </view>
+            </view>
+            <view class="ui-col ui-col-align-right align-right valign-middle" style="padding-right: 15px;">
+              <view class="ui-col-content align-right valign-middle">
+                <view class="time">{{ item.time }}</view>
+              </view>
+            </view>
+          </view>
+          <view bindtap="inToDetail" class="ui-row" style="height:80px;">
+            <view class="ui-col ui-col-align-center align-center valign-middle" style="flex:0 0 80px;">
+              <view class="ui-col-content align-center valign-middle">
+                <image src="{{ item.img }}" style="width:50px;height:50px;" />
+              </view>
+            </view>
+            <view class="ui-col valign-middle" style="padding-right: 15px;">
+              <view class="ui-col-content valign-middle">
+                <view class="content">{{ item.text }}</view>
+              </view>
+            </view>
+          </view>
         </view>
-      </view>
-      <view class="ui-col ui-col-align-center align-center valign-middle" style="flex:0 0 80px;">
-        <view class="ui-col-content align-center valign-middle">
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class="swiper-content">
+      <scroll-view scroll-y="{{true}}">
+
+        <view class="collect" wx:for="{{list3}}">
+          <view class="ui-row" style="height:40px;">
+            <view class="ui-col ui-col-align-center align-center valign-middle" style="flex:0 0 60px;">
+              <view class="ui-col-content align-center valign-middle">
+                <image src="{{ item.head }}" style="width:30px;height:30px;" />
+              </view>
+            </view>
+            <view class="ui-col valign-middle" style="">
+              <view class="ui-col-content valign-middle">
+                <view class="name">{{ item.name }}</view>
+              </view>
+            </view>
+            <view class="ui-col ui-col-align-right align-right valign-middle" style="padding-right: 15px;">
+              <view class="ui-col-content align-right valign-middle">
+                <view class="time">{{ item.time }}</view>
+              </view>
+            </view>
+          </view>
+          <view class="ui-row" style="height:80px;">
+            <view class="ui-col ui-col-align-center align-center valign-middle" style="flex:0 0 80px;">
+              <view class="ui-col-content align-center valign-middle">
+                <image src="{{ item.img }}" style="width:50px;height:50px;" />
+              </view>
+            </view>
+            <view class="ui-col valign-middle" style="padding-right: 15px;">
+              <view class="ui-col-content valign-middle">
+                <view class="content">{{ item.text }}</view>
+              </view>
+            </view>
+          </view>
         </view>
-      </view>
-    </view>
-  </ui-nav-bar>
-  <!-- <view style="height:{{NAV_HEIGHT}}"></view> -->
-  <view class="tabContent" wx:if="{{contentshow === 0}}">
-    <view class="content_list">
-      <view wx:for="{{ items0 }}" class="{{index % 2 == 0 ? 'grey-bg':''}}">
-        {{ item }}
-      </view>
-    </view>
-  </view>
-  <view class="tabContent" wx:if="{{contentshow === 1}}">
-    <view class="content_list">
-      <view wx:for="{{ items1 }}" class="{{index % 2 == 0 ? 'grey-bg':''}}">
-        {{ item }}
-      </view>
-    </view>
-  </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+
   <ui-mask show="{{isShow}}" hide-on-tap="{{false}}" hide-delay="500" _pid="{{_pid}}">
     <view class="content">
       <view class="content-in-box">
@@ -42,4 +86,5 @@
 
     </view>
   </ui-mask>
+
 </view>

@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "add"
+  "navigationBarTitleText": "新增",
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "black"
 }
