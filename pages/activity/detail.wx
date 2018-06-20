@@ -1,10 +1,20 @@
 <template>
   <view>
-
+<!-- 活动图片-->
     <image
     src="http://www.72swk.com/data/uploads/2015/08/18/144556346955d2dc4fa45ef.jpg"
     style="height:{{imgHeight}}px"
     ></image>
+<!-- 活动标题-->
+<!-- 活动时间-->
+<!-- 参与人员-->
+<!-- 发起人-->
+<!-- 活动描述-->
+<!-- 活动描述-->
+
+
+
+
     
   </view>
 </template>

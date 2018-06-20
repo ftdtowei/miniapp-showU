@@ -62,4 +62,5 @@ export default {
 
 <style lang="less">
 @import './static/styles/index.less';
+@import './static/styles/weui.wxss';
 </style>
