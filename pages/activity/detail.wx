@@ -6,7 +6,7 @@
     style="height:{{imgHeight}}px"
     ></image>
 <!-- 活动描述-->
-  <view class="sample_content"  style="padding:0 5px">
+  <view class="sample_content"  >
 
     <ui-summary
                 height="80"
@@ -30,9 +30,9 @@
       </view>
   </view>
   <!-- 参加按钮 -->
-             
-  
-
+  <view class="btn-box">   
+  <button type="primary" class="btn">确认加入</button>
+</view>
 
 
 
@@ -77,7 +77,7 @@
 </script>
 
 <style lang="less">
-@import './static/styles/weui.wxss';
+// @import './static/styles/weui.wxss';
 
 .avatar-box{
   margin: 10px;
@@ -103,6 +103,15 @@
 .sample_content{
   margin: 10px;
    background: #fff
+}
+.btn-box{
+  margin: 30px 40px;
+ 
+}
+.btn{
+  height: 40px;
+  width: 100%;
+   line-height: 40px
 }
 
 </style>

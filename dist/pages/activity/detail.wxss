@@ -43,3 +43,11 @@
   margin: 10px;
   background: #fff;
 }
+.btn-box {
+  margin: 30px 40px;
+}
+.btn {
+  height: 40px;
+  width: 100%;
+  line-height: 40px;
+}

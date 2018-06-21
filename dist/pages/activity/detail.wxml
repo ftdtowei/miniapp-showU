@@ -2,7 +2,7 @@
   <!-- 活动图片-->
   <image src="http://www.72swk.com/data/uploads/2015/08/18/144556346955d2dc4fa45ef.jpg" style="height:{{imgHeight}}px" />
   <!-- 活动描述-->
-  <view class="sample_content" style="padding:0 5px">
+  <view class="sample_content">
 
     <ui-summary height="80" animate="{{true}}" _pid="{{_pid}}">
       <text>
@@ -21,9 +21,9 @@
     </view>
   </view>
   <!-- 参加按钮 -->
-
-
-
+  <view class="btn-box">
+    <button type="primary" class="btn">确认加入</button>
+  </view>
 
 
 
