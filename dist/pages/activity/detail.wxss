@@ -19,7 +19,27 @@
 /* 水平垂直居中 */
 /* 超出部分出省略号 */
 /* 多行文本超出部分省略号 */
-.sample_title {
-  height: 46px;
-  line-height: 46px;
+.avatar-box {
+  margin: 10px;
+  background: #fff;
+  padding: 5px;
+}
+.avatar-content {
+  display: flex;
+  margin-left: 5px;
+  margin-top: 5px;
+  height: 30px;
+  line-height: 30px;
+}
+.avatar-txt {
+  font-size: 13px;
+  margin-left: 5px;
+}
+.title {
+  font-size: 16px;
+  font-weight: 500;
+}
+.sample_content {
+  margin: 10px;
+  background: #fff;
 }

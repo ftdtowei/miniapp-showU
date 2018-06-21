@@ -1,5 +1,31 @@
-<view>
-
+<view style="background:#F7F9FB;height:100%">
+  <!-- 活动图片-->
   <image src="http://www.72swk.com/data/uploads/2015/08/18/144556346955d2dc4fa45ef.jpg" style="height:{{imgHeight}}px" />
+  <!-- 活动描述-->
+  <view class="sample_content" style="padding:0 5px">
+
+    <ui-summary height="80" animate="{{true}}" _pid="{{_pid}}">
+      <text>
+        {{detail}}
+      </text>
+    </ui-summary>
+  </view>
+
+
+  <!-- 参与人员-->
+  <view class="avatar-box">
+    <!-- repeat -->
+    <view class="avatar-content">
+      <image src="http://images.uileader.com/20180313/16224b1e-bd33-482e-bde5-d416723a2970.png" mode="aspectFill" style="width:30px;height:30px" />
+      <text class="avatar-txt">name</text>
+    </view>
+  </view>
+  <!-- 参加按钮 -->
+
+
+
+
+
+
 
 </view>

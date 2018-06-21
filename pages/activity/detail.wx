@@ -1,16 +1,37 @@
 <template>
-  <view>
+  <view style="background:#F7F9FB;height:100%">
 <!-- 活动图片-->
     <image
     src="http://www.72swk.com/data/uploads/2015/08/18/144556346955d2dc4fa45ef.jpg"
     style="height:{{imgHeight}}px"
     ></image>
-<!-- 活动标题-->
-<!-- 活动时间-->
+<!-- 活动描述-->
+  <view class="sample_content"  style="padding:0 5px">
+
+    <ui-summary
+                height="80"
+                animate="{{true}}"
+               >
+        <text>
+            {{detail}}
+        </text>
+    </ui-summary>
+</view>
+
+
 <!-- 参与人员-->
-<!-- 发起人-->
-<!-- 活动描述-->
-<!-- 活动描述-->
+   <view class="avatar-box">   <!-- repeat -->
+    <view class="avatar-content">
+     <image
+       src="http://images.uileader.com/20180313/16224b1e-bd33-482e-bde5-d416723a2970.png"
+      mode='aspectFill'
+      style="width:30px;height:30px"/>
+      <text class="avatar-txt">name</text>
+      </view>
+  </view>
+  <!-- 参加按钮 -->
+             
+  
 
 
 
@@ -21,27 +42,31 @@
 
 
 <script>
-let items = []
-for (let i = 1; i <= 30; i++) {
-  items.push(`列表项目${i}`)
-}
+
   export default {
   config: {
-    "navigationBarTitleText": "多个吸顶容器",
+    "navigationBarTitleText": "活动标题",
     "navigationBarBorderColor": "rgba(231, 231, 231, 0.6)",
     "navigationBarBackgroundColor":"#FFFFFF",
-    "navigationBarTextStyle":"black",
     "navigationBarTextStyle":"black"
   },
   data : {
     NAV_HEIGHT:wx.STATUS_BAR_HEIGHT+wx.DEFAULT_HEADER_HEIGHT,
-    items: items,
+    items: {},
     imgHeight: parseInt(wx.WIN_WIDTH / 1125 * 628),
-    scrollTop:0
+    scrollTop:0,
+    detail:''
   },
-  onPageScroll (e) {
+  onLoad(options){
+    var items =  JSON.parse(options.item);
+    console.log(items);
+
+    wx.setNavigationBarTitle({
+      title: items.text//页面标题 设置为活动标题
+      
+    })
     this.setData({
-      scrollTop: e.scrollTop
+      detail: items.text
     })
   },
   navigateBack () {
@@ -52,10 +77,32 @@ for (let i = 1; i <= 30; i++) {
 </script>
 
 <style lang="less">
-  .sample_title{
-    height: 46px;
-    line-height: 46px;
-  }
+@import './static/styles/weui.wxss';
 
+.avatar-box{
+  margin: 10px;
+  background: #fff;
+  padding:5px;
+}  
+.avatar-content{
+  display: flex;
+  margin-left: 5px;
+  margin-top: 5px;
+  height: 30px;
+  line-height: 30px
+}
+.avatar-txt{
+   font-size: 13px;
+  margin-left: 5px;
+   
+}
+.title{
+  font-size: 16px;
+  font-weight: 500;
+}
+.sample_content{
+  margin: 10px;
+   background: #fff
+}
 
 </style>

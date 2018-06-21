@@ -1,7 +1,7 @@
 <template>
   <view>
     <view class="content_wrap">
-      <ui-blur height="300" url="{{ url }}">
+      <ui-blur height="200" url="{{ url }}">
         <view class="top_content">
           <view>
             <image

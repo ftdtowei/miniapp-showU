@@ -1,6 +1,8 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "多个吸顶容器",
+  "usingComponents": {
+    "ui-summary": "../../packages/touchui-wx-components/ui-summary/dist/index"
+  },
+  "navigationBarTitleText": "活动标题",
   "navigationBarBorderColor": "rgba(231, 231, 231, 0.6)",
   "navigationBarBackgroundColor": "#FFFFFF",
   "navigationBarTextStyle": "black"

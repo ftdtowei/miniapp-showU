@@ -1,6 +1,6 @@
 <view>
   <view class="content_wrap">
-    <ui-blur height="300" url="{{ url }}" _pid="{{_pid}}">
+    <ui-blur height="200" url="{{ url }}" _pid="{{_pid}}">
       <view class="top_content">
         <view>
           <image src="{{ url }}" mode="aspectFill" style="width:60px;height:60px" />

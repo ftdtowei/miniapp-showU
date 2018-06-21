@@ -3,20 +3,24 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var items = [];
-for (var i = 1; i <= 30; i++) {
-  items.push("\u5217\u8868\u9879\u76EE" + i);
-}
 exports.default = Page({
   data: {
     NAV_HEIGHT: wx.STATUS_BAR_HEIGHT + wx.DEFAULT_HEADER_HEIGHT,
-    items: items,
+    items: {},
     imgHeight: parseInt(wx.WIN_WIDTH / 1125 * 628),
-    scrollTop: 0
+    scrollTop: 0,
+    detail: ''
   },
-  onPageScroll: function onPageScroll(e) {
+  onLoad: function onLoad(options) {
+    var items = JSON.parse(options.item);
+    console.log(items);
+
+    wx.setNavigationBarTitle({
+      title: items.text //页面标题 设置为活动标题
+
+    });
     this.setData({
-      scrollTop: e.scrollTop
+      detail: items.text
     });
   },
   navigateBack: function navigateBack() {

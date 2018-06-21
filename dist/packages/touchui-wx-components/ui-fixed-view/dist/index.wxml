@@ -1,3 +1,0 @@
-<view class="ui-fixed-view" style="{{ selfStyle }}">
-  <slot></slot>
-</view>
