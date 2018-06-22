@@ -1,11 +1,17 @@
 <template>
-  <view>add</view>
+  <view style="background:#F7F9FB;height:100%; padding:10px">
+<!-- F7F9FB-->
+    <view class="text-box">
+      <textarea class="text-area" bindblur="bindTextAreaBlur" auto-height placeholder="输入活动详情" />
+    </view>
+  </view>
+
 </template>
 
 <script>
 export default {
   config: {
-    "navigationBarTitleText": "新增",
+    "navigationBarTitleText": "活动发起",
     "navigationStyle": "custom",
     "navigationBarTextStyle":"black"
   },
@@ -14,4 +20,12 @@ export default {
 </script>
 
 <style lang="less">
+
+.text-box{
+  background: #fff;
+  height: 200px;
+}
+.text-area{
+  border: 0.1px solid #F7F9FB;
+}
 </style>

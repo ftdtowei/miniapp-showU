@@ -1,1 +1,7 @@
-<view>add</view>
+<view style="background:#F7F9FB;height:100%; padding:10px">
+  <!-- F7F9FB-->
+  <view class="text-box">
+    <textarea class="text-area" bindblur="bindTextAreaBlur" auto-height placeholder="输入活动详情">
+    </textarea>
+  </view>
+</view>
