@@ -1,21 +1,86 @@
 <template>
-  <view style="background:#F7F9FB;height:100%; padding:10px">
+  <view style="background:#F7F9FB;height:100%;">
 <!-- F7F9FB-->
-    <view class="text-box">
-      <textarea class="text-area" bindblur="bindTextAreaBlur" auto-height placeholder="输入活动详情" />
+    <view class="text-box" >
+       <input class="text tinput" placeholder="输入活动标题" maxlength=10 />
+      </view>
+
+    <view class="text-box box-area">
+     <textarea auto-height class="text area"  placeholder="输入活动详情" />
+    </view>
+
+    <view class="text-box time-box">
+        <picker mode="date" value="{{date}}" start="2017-01-01" end="2020-12-01" bindchange="bindDateChange">
+          <view class="picker">
+           <text class="label">截至日期: {{date}}</text>
+          </view>
+        </picker>
+    </view>
+    <view class="text-box time-box">
+        <picker mode="time" value="{{time}}" start="2017-01-01" end="2020-12-01" bindchange="bindTimeChange">
+          <view class="picker">
+           <text class="label">截至时间: {{time}}</text>
+          </view>
+        </picker>
+    </view>
+
+      <!-- 参加按钮 -->
+    <view class="btn-box">   
+       <button type="default" class="btn">清空</button>
+       <button type="primary" class="btn save">保存并发布</button>
     </view>
   </view>
+
+  
 
 </template>
 
 <script>
+Date.prototype.Format = function (fmt) { //author: meizz 
+    var o = {
+        "M+": this.getMonth() + 1, //月份 
+        "d+": this.getDate(), //日 
+        "H+": this.getHours(), //小时 
+        "m+": this.getMinutes(), //分 
+        "s+": this.getSeconds(), //秒 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+        "S": this.getMilliseconds() //毫秒 
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
 export default {
   config: {
     "navigationBarTitleText": "活动发起",
     "navigationStyle": "custom",
     "navigationBarTextStyle":"black"
   },
-  data: {}
+  data: {
+    date:'233'
+  },
+  onLoad(){
+     var tmp =new Date(new Date(new Date().toLocaleDateString()).getTime()+24*60*60*1000-1)
+      var end = new Date(tmp).Format("yyyy-MM-dd");  
+     var time =  new Date(tmp).Format("HH:mm")
+    this.setData({
+      date:end,
+      time:time
+    })
+  },
+  bindDateChange(e){
+    var date = e.detail.value;
+    this.setData({
+      date:date
+    })
+  },
+  bindTimeChange(e){
+    var time = e.detail.value;
+    this.setData({
+      time:time
+    })
+  }
 }
 </script>
 
@@ -23,9 +88,41 @@ export default {
 
 .text-box{
   background: #fff;
-  height: 200px;
+  padding: 20px
+
 }
-.text-area{
-  border: 0.1px solid #F7F9FB;
+.text{
+  padding: 5px;
+  height: 35px;
+  line-height: 35px;
+  background: #fff;
+  border-bottom: 1px solid rgb(226, 234, 243);
+  width: 100%;
 }
+.tinput{
+  font-size: 22px;  
+}
+.area{
+  font-size: 18px;
+
+}
+.btn-box{
+  margin: 30px 40px;
+  display: flex;
+ 
+}
+.btn{
+  height: 40px;
+  width: 100%;
+   line-height: 40px
+}
+.save {
+  margin-left: 10px;
+}
+.time-box{
+  font-size: 15px;
+  color:  rgb(184, 191, 197);
+}
+
+
 </style>

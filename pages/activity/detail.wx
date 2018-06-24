@@ -1,10 +1,10 @@
 <template>
   <view style="background:#F7F9FB;height:100%">
 <!-- 活动图片-->
-    <image
+    <!-- <image
     src="http://www.72swk.com/data/uploads/2015/08/18/144556346955d2dc4fa45ef.jpg"
     style="height:{{imgHeight}}px"
-    ></image>
+    /> -->
 <!-- 活动描述-->
   <view class="sample_content"  >
 
@@ -80,7 +80,7 @@
 // @import './static/styles/weui.wxss';
 
 .avatar-box{
-  margin: 10px;
+  margin-top: 10px;
   background: #fff;
   padding:5px;
 }  
@@ -101,7 +101,7 @@
   font-weight: 500;
 }
 .sample_content{
-  margin: 10px;
+  // margin: 10px;
    background: #fff
 }
 .btn-box{
