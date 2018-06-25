@@ -1,16 +1,13 @@
 <view>
   <ui-tabs index="{{ current1 }}" bindchange="handleChange1" _pid="{{_pid}}">
-    <ui-tab _pid="{{_pid}}">热门活动</ui-tab>
-    <ui-tab _pid="{{_pid}}">已参加</ui-tab>
+    <ui-tab _pid="{{_pid}}">热门群组</ui-tab>
+    <ui-tab _pid="{{_pid}}">已参加群组</ui-tab>
   </ui-tabs>
-
   <swiper current="{{ current1 }}" bindchange="handleContentChange1" style="height:{{swiperHeight}}">
-    <!-- 热门活动 -->
     <swiper-item class="swiper-content">
       <scroll-view scroll-y="{{true}}">
 
         <view class="collect" wx:for="{{list3}}">
-          <view style="height:10px;background:#F7F9FB;"></view>
           <view class="ui-row" style="height:40px;">
             <view class="ui-col ui-col-align-center align-center valign-middle" style="flex:0 0 60px;">
               <view class="ui-col-content align-center valign-middle">
@@ -43,14 +40,10 @@
         </view>
       </scroll-view>
     </swiper-item>
-
-    <!-- 已参加 -->
     <swiper-item class="swiper-content">
       <scroll-view scroll-y="{{true}}">
 
         <view class="collect" wx:for="{{list3}}">
-          <view style="height:10px;background:#F7F9FB;"></view>
-
           <view class="ui-row" style="height:40px;">
             <view class="ui-col ui-col-align-center align-center valign-middle" style="flex:0 0 60px;">
               <view class="ui-col-content align-center valign-middle">

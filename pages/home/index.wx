@@ -1,17 +1,14 @@
 <template>
 <view>
   <ui-tabs index="{{ current1 }}" bindchange="handleChange1">
-      <ui-tab>热门活动</ui-tab>
-      <ui-tab>已参加</ui-tab>
+      <ui-tab>热门群组</ui-tab>
+      <ui-tab>已参加群组</ui-tab>
   </ui-tabs>
-   
   <swiper  current="{{ current1 }}"  bindchange="handleContentChange1" style="height:{{swiperHeight}}">
-    <!-- 热门活动 -->
       <swiper-item class="swiper-content">
          <scroll-view scroll-y="{{true}}" >
 
            <view class="collect" wx:for="{{list3}}">
-             <view style="height:10px;background:#F7F9FB;"></view>
                     <ui-row height="40">
                         <ui-col vertical-align="middle"  align="center" width="60">
                             <image
@@ -26,12 +23,12 @@
                             <view class="time">{{ item.time }}</view>
                         </ui-col>
                     </ui-row>
-                    <ui-row  height="80" bindtap="inToDetail" data-item="{{item}}">
+                    <ui-row height="80" bindtap="inToDetail" data-item="{{item}}">
                         <ui-col vertical-align="middle" align="center" width="80">
                             <image
                                    src="{{ item.img }}"
                                    style="width:50px;height:50px;"
-                                   ></image>
+                                   />
                         </ui-col>
                         <ui-col vertical-align="middle" space-right="15">
                             <view class="content">{{ item.text }}</view>
@@ -40,14 +37,10 @@
                 </view>
          </scroll-view>
       </swiper-item>
-
-      <!-- 已参加 -->
        <swiper-item class="swiper-content">
          <scroll-view scroll-y="{{true}}" >
 
            <view class="collect" wx:for="{{list3}}">
-             <view style="height:10px;background:#F7F9FB;"></view>
-             
                     <ui-row height="40">
                         <ui-col vertical-align="middle"  align="center" width="60">
                             <image
@@ -93,9 +86,7 @@
 <script>
 export default {
   config: {
-    "navigationBarTitleText": "活动发现",
-    "navigationStyle": "custom",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "活动发现"
   },
   data: {
     isShow:false,
@@ -223,9 +214,9 @@ export default {
         })
     },
     inToDetail(e){
-        var item = JSON.stringify(e.currentTarget.dataset.item);
+      var bean =  JSON.stringify(e.currentTarget.dataset.item)
         wx.navigateTo({
-          url: '/pages/activity/detail?item=' + item
+          url: '/pages/group/group-detail?item='+bean
         })
     }
 }

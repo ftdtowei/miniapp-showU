@@ -4,7 +4,5 @@
     "ui-tab": "../../packages/touchui-wx-components/ui-tab/dist/index",
     "ui-mask": "../../packages/touchui-wx-components/ui-mask/dist/index"
   },
-  "navigationBarTitleText": "活动发现",
-  "navigationStyle": "custom",
-  "navigationBarTextStyle": "black"
+  "navigationBarTitleText": "活动发现"
 }

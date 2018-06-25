@@ -109,9 +109,9 @@ exports.default = Page({
     });
   },
   inToDetail: function inToDetail(e) {
-    var item = JSON.stringify(e.currentTarget.dataset.item);
+    var bean = JSON.stringify(e.currentTarget.dataset.item);
     wx.navigateTo({
-      url: '/pages/activity/detail?item=' + item
+      url: '/pages/group/group-detail?item=' + bean
     });
   }
 });

@@ -11,14 +11,15 @@ export default {
       'pages/home/index',
       'pages/home/add',
       'pages/home/user',
-      'pages/activity/detail'
+      'pages/group/group-detail',
+      'pages/group/map'
     ],
     window: {
-      backgroundTextStyle: 'dark',
-      backgroundColor: '#efefef',
-      navigationBarBackgroundColor: '#ffffff',
+      // backgroundTextStyle: 'dark',
+      backgroundColor: '#3399ff',
+      navigationBarBackgroundColor: '#3399ff',
       navigationBarTitleText: 'TouchUI',
-      navigationBarTextStyle: 'black'
+      navigationBarTextStyle: 'white'
     },
     networkTimeout: {
       request: 10000
@@ -37,7 +38,7 @@ export default {
           selectedIconPath: 'static/images/edit.png',
           iconPath: 'static/images/edit-no.png',
           pagePath: 'pages/home/add',
-          text: '发布'
+          text: '创建'
         },
         {
           selectedIconPath: 'static/images/user.png',
@@ -62,5 +63,4 @@ export default {
 
 <style lang="less">
 @import './static/styles/index.less';
-
 </style>

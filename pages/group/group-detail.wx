@@ -45,10 +45,7 @@
 
   export default {
   config: {
-    "navigationBarTitleText": "活动标题",
-    "navigationBarBorderColor": "rgba(231, 231, 231, 0.6)",
-    "navigationBarBackgroundColor":"#FFFFFF",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "活动标题"
   },
   data : {
     NAV_HEIGHT:wx.STATUS_BAR_HEIGHT+wx.DEFAULT_HEADER_HEIGHT,

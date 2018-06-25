@@ -43,5 +43,10 @@ exports.default = Page({
     this.setData({
       time: time
     });
+  },
+  pickadress: function pickadress() {
+    wx.navigateTo({
+      url: '/pages/group/map'
+    });
   }
 });

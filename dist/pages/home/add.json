@@ -1,6 +1,4 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "活动发起",
-  "navigationStyle": "custom",
-  "navigationBarTextStyle": "black"
+  "navigationBarTitleText": "创建群组"
 }

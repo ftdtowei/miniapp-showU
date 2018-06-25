@@ -23,8 +23,6 @@
 <script>
 export default {
   config: {
-    backgroundColor: '#F4F4F4',
-    navigationBarTextStyle: 'black'
 
   },
   data : {

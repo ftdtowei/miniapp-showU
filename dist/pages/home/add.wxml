@@ -1,28 +1,25 @@
 <view style="background:#F7F9FB;height:100%;">
   <!-- F7F9FB-->
   <view class="text-box">
-    <input class="text tinput" placeholder="输入活动标题" maxlength="10"></input>
+    <input class="text tinput" placeholder="群组名称" maxlength="10"></input>
   </view>
 
   <view class="text-box box-area">
-    <textarea auto-height class="text area" placeholder="输入活动详情">
+    <textarea auto-height class="text area" placeholder="群组简介">
     </textarea>
   </view>
+  <view class="text-box box-area">
+    <textarea auto-height class="text area" placeholder="常用活动地址" bindtap="pickadress">
+    </textarea>
+  </view>
+  <!-- <view class="text-box time-box">
+        <picker mode="date" value="{{date}}" start="2017-01-01" end="2020-12-01" bindchange="bindDateChange">
+          <view class="picker">
+           <text class="label">截至日期: {{date}}</text>
+          </view>
+        </picker>
+    </view> -->
 
-  <view class="text-box time-box">
-    <picker mode="date" value="{{date}}" start="2017-01-01" end="2020-12-01" bindchange="bindDateChange">
-      <view class="picker">
-        <text class="label">截至日期: {{date}}</text>
-      </view>
-    </picker>
-  </view>
-  <view class="text-box time-box">
-    <picker mode="time" value="{{time}}" start="2017-01-01" end="2020-12-01" bindchange="bindTimeChange">
-      <view class="picker">
-        <text class="label">截至时间: {{time}}</text>
-      </view>
-    </picker>
-  </view>
 
   <!-- 参加按钮 -->
   <view class="btn-box">
