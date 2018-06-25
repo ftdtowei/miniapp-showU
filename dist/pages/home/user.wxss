@@ -51,3 +51,7 @@
 .content_wrap .top_content view.card .ui-view {
   font-size: 14px;
 }
+.money {
+  height: 220px;
+  width: 220px;
+}

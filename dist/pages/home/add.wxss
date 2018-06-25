@@ -21,8 +21,35 @@
 /* 多行文本超出部分省略号 */
 .text-box {
   background: #fff;
-  height: 200px;
+  padding: 20px;
 }
-.text-area {
-  border: 0.1px solid #F7F9FB;
+.text {
+  padding: 5px;
+  height: 35px;
+  line-height: 35px;
+  background: #fff;
+  border-bottom: 1px solid #e2eaf3;
+  width: 100%;
+}
+.tinput {
+  font-size: 22px;
+}
+.area {
+  font-size: 18px;
+}
+.btn-box {
+  margin: 30px 40px;
+  display: flex;
+}
+.btn {
+  height: 40px;
+  width: 100%;
+  line-height: 40px;
+}
+.save {
+  margin-left: 10px;
+}
+.time-box {
+  font-size: 15px;
+  color: #b8bfc5;
 }

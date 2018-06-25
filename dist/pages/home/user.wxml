@@ -12,4 +12,7 @@
     </ui-blur>
 
   </view>
+  <view bindtap="previewImage">
+    <image class="money" src="../../static/images/money.png" />
+  </view>
 </view>

@@ -1,6 +1,9 @@
 <view style="background:#F7F9FB;height:100%">
   <!-- 活动图片-->
-  <image src="http://www.72swk.com/data/uploads/2015/08/18/144556346955d2dc4fa45ef.jpg" style="height:{{imgHeight}}px" />
+  <!-- <image
+    src="http://www.72swk.com/data/uploads/2015/08/18/144556346955d2dc4fa45ef.jpg"
+    style="height:{{imgHeight}}px"
+    /> -->
   <!-- 活动描述-->
   <view class="sample_content">
 

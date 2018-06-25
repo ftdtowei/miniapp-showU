@@ -20,7 +20,7 @@
 /* 超出部分出省略号 */
 /* 多行文本超出部分省略号 */
 .avatar-box {
-  margin: 10px;
+  margin-top: 10px;
   background: #fff;
   padding: 5px;
 }
@@ -40,7 +40,6 @@
   font-weight: 500;
 }
 .sample_content {
-  margin: 10px;
   background: #fff;
 }
 .btn-box {

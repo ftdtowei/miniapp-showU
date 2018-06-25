@@ -10,7 +10,8 @@ exports.default = Page({
     url: null,
     items: [],
     alpha: 0,
-    className: ''
+    className: '',
+    path: ['https://raw.githubusercontent.com/ftdtowei/miniapp-showU/master/static/images/money.jpg', 'https://raw.githubusercontent.com/ftdtowei/miniapp-showU/master/static/images/money.jpg'] //http url
   },
   navigateBack: function navigateBack() {
     wx.navigateBack();
@@ -26,5 +27,13 @@ exports.default = Page({
       url: avatar,
       className: appInstance.globalData.user.nickName
     });
+  },
+
+  previewImage: function previewImage(e) {
+    wx.previewImage({
+      current: this.data.path, // 当前显示图片的http链接     
+      urls: this.data.path // 需要预览的图片http链接列表     
+    });
   }
+
 });

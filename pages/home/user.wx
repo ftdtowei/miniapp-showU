@@ -34,7 +34,7 @@ export default {
     items: [],
     alpha: 0,
     className: '',
-    path:['../../static/images/money.png','../../static/images/money.png']//http url
+    path:['https://raw.githubusercontent.com/ftdtowei/miniapp-showU/master/static/images/money.jpg','https://raw.githubusercontent.com/ftdtowei/miniapp-showU/master/static/images/money.jpg']//http url
   },
   navigateBack () {
     wx.navigateBack()
