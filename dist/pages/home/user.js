@@ -11,7 +11,7 @@ exports.default = Page({
     items: [],
     alpha: 0,
     className: '',
-    path: ['https://raw.githubusercontent.com/ftdtowei/miniapp-showU/master/static/images/money.jpg', 'https://raw.githubusercontent.com/ftdtowei/miniapp-showU/master/static/images/money.jpg'] //http url
+    path: ['https://raw.githubusercontent.com/ftdtowei/miniapp-showU/master/static/images/money.png', 'https://raw.githubusercontent.com/ftdtowei/miniapp-showU/master/static/images/money.png'] //http url
   },
   navigateBack: function navigateBack() {
     wx.navigateBack();
