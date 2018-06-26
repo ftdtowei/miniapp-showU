@@ -1,9 +1,9 @@
 <template>
   <view>
     <view class="search-box">
-      <input bindinput="inputing" class="search" placeh/>
+      <input bindinput="inputing" class="search" placeholder="输入地址关键字" value="{{inputTxt}}"/>
     </view>
-    <view wx:for="{{addressList}}" class="preview">
+    <view wx:for="{{addressList}}" class="preview"  bindtap="picktitle" data-item="{{item}}">
       <text>{{item.title}}</text>
     </view>
 
@@ -28,7 +28,8 @@ export default {
      long:'',
      lat:'',
      city:'',
-     addressList:[]
+     addressList:[],
+     inputTxt:''
   },
   onLoad(){
   var self = this;
@@ -92,6 +93,20 @@ export default {
             console.log(res);
         }
     });
+  },
+  picktitle(e){
+    var item =  e.currentTarget.dataset.item
+    console.log(item)
+    this.setData({
+      inputTxt:item.title,
+      addressList:[],
+      long:item.location.lng,
+      lat:item.location.lat
+      
+    })
+        // wx.navigateTo({
+        //   url: '/pages/group/group-detail?item='+bean
+        // })
   }
 }
 </script>

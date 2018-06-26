@@ -14,7 +14,8 @@ exports.default = Page({
     long: '',
     lat: '',
     city: '',
-    addressList: []
+    addressList: [],
+    inputTxt: ''
   },
   onLoad: function onLoad() {
     var self = this;
@@ -77,5 +78,19 @@ exports.default = Page({
         console.log(res);
       }
     });
+  },
+  picktitle: function picktitle(e) {
+    var item = e.currentTarget.dataset.item;
+    console.log(item);
+    this.setData({
+      inputTxt: item.title,
+      addressList: [],
+      long: item.location.lng,
+      lat: item.location.lat
+
+    });
+    // wx.navigateTo({
+    //   url: '/pages/group/group-detail?item='+bean
+    // })
   }
 });

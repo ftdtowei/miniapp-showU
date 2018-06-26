@@ -1,8 +1,8 @@
 <view>
   <view class="search-box">
-    <input bindinput="inputing" class="search" placeh=""></input>
+    <input bindinput="inputing" class="search" placeholder="输入地址关键字" value="{{inputTxt}}"></input>
   </view>
-  <view wx:for="{{addressList}}" class="preview">
+  <view wx:for="{{addressList}}" class="preview" bindtap="picktitle" data-item="{{item}}">
     <text>{{item.title}}</text>
   </view>
 
