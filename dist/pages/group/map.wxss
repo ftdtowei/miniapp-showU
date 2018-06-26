@@ -1,0 +1,35 @@
+/* 1像素解决方案 */
+/*
+ * 清除1px
+ */
+/*
+ * 清除浮动
+ */
+/*
+ * mobile
+ */
+/*
+ * 1px
+ */
+/*
+ * text
+ */
+/* 垂直居中 */
+/* 水平居中 */
+/* 水平垂直居中 */
+/* 超出部分出省略号 */
+/* 多行文本超出部分省略号 */
+.search-box {
+  padding: 8px 5px;
+}
+.search {
+  border-radius: 3px;
+  border: 1px solid #e2eaf3;
+  height: 30px;
+  padding: 0px 5px;
+}
+.preview {
+  font-size: 13px;
+  color: #5f656b;
+  padding: 5px 10px;
+}

@@ -1,41 +1,51 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+// 引入SDK核心类
+var QQMapWX = require('../../static/utils/qqmap.min.js');
+// 实例化API核心类
+var demo = new QQMapWX({
+  key: 'DJEBZ-TNS3W-IOMR4-OZ2F4-J7XQ6-66FSH' // 必填
+});
 exports.default = Page({
   data: {
-    markers: [{
-      iconPath: "../../static/images/localcate.png",
-      id: 0,
-      latitude: 23.099994,
-      longitude: 113.324520,
-      width: 50,
-      height: 50
-    }],
-    polyline: [{
-      points: [{
-        longitude: 113.3245211,
-        latitude: 23.10229
-      }, {
-        longitude: 113.324520,
-        latitude: 23.21229
-      }],
-      color: "#FF0000DD",
-      width: 2,
-      dottedLine: true
-    }],
-    controls: [{
-      id: 1,
-      iconPath: '../../static/images/uplace.png',
-      position: {
-        left: 0,
-        top: 300 - 50,
-        width: 50,
-        height: 50
-      },
-      clickable: true
-    }]
+    long: '',
+    lat: '',
+    city: '',
+    addressList: []
+  },
+  onLoad: function onLoad() {
+    var self = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success: function success(res) {
+        // 调用接口 解析当前城市
+        demo.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: function success(res) {
+            var city = res.result.address_component.city;
+            self.setData({
+              city: city
+            });
+          },
+          fail: function fail(res) {
+            console.log(res);
+          },
+          complete: function complete(res) {
+            console.log(res);
+          }
+        });
+        self.setData({
+          long: res.longitude,
+          lat: res.latitude
+        });
+      }
+    });
   },
   regionchange: function regionchange(e) {
     console.log(e.type);
@@ -45,5 +55,27 @@ exports.default = Page({
   },
   controltap: function controltap(e) {
     console.log(e.controlId);
+  },
+  inputing: function inputing(e) {
+    var self = this;
+    var input = e.detail.value;
+    console.log(self.data);
+
+    // 调用接口  关键字列表
+    demo.getSuggestion({
+      keyword: input,
+      region: self.data.city,
+      success: function success(res) {
+        self.setData({
+          addressList: res.data
+        });
+      },
+      fail: function fail(res) {
+        console.log(res);
+      },
+      complete: function complete(res) {
+        console.log(res);
+      }
+    });
   }
 });

@@ -1,47 +1,66 @@
 <template>
   <view>
-<map id="map" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>
+    <view class="search-box">
+      <input bindinput="inputing" class="search" placeh/>
+    </view>
+    <view wx:for="{{addressList}}" class="preview">
+      <text>{{item.title}}</text>
+    </view>
+
+    <map id="map" longitude="{{ long }}" latitude="{{ lat }}" scale="14"   show-location style="width: 100%; height: 400px;"></map>
+    <image src="../../static/images/localcate.png"/>
 
   </view>
 </template>
 
 <script>
+// 引入SDK核心类
+var QQMapWX = require('../../static/utils/qqmap.min.js');
+   // 实例化API核心类
+    var demo = new QQMapWX({
+        key: 'DJEBZ-TNS3W-IOMR4-OZ2F4-J7XQ6-66FSH' // 必填
+    });
 export default {
   config: {
     navigationBarTitleText: 'map'
   },
    data: {
-    markers: [{
-      iconPath: "../../static/images/localcate.png",
-      id: 0,
-      latitude: 23.099994,
-      longitude: 113.324520,
-      width: 50,
-      height: 50
-    }],
-    polyline: [{
-      points: [{
-        longitude: 113.3245211,
-        latitude: 23.10229
-      }, {
-        longitude: 113.324520,
-        latitude: 23.21229
-      }],
-      color:"#FF0000DD",
-      width: 2,
-      dottedLine: true
-    }],
-    controls: [{
-      id: 1,
-      iconPath: '../../static/images/uplace.png',
-      position: {
-        left: 0,
-        top: 300 - 50,
-        width: 50,
-        height: 50
-      },
-      clickable: true
-    }]
+     long:'',
+     lat:'',
+     city:'',
+     addressList:[]
+  },
+  onLoad(){
+  var self = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success: function(res) {
+      // 调用接口 解析当前城市
+      demo.reverseGeocoder({
+          location: {
+              latitude: res.latitude,
+              longitude: res.longitude
+          },
+          success: function(res) {
+            var city = res.result.address_component.city
+            self.setData({
+                city:city
+              })
+          },
+          fail: function(res) {
+              console.log(res);
+          },
+          complete: function(res) {
+              console.log(res);
+          }
+      });
+      self.setData({
+        long:res.longitude,
+        lat:res.latitude
+      })
+
+      }
+    })
   },
   regionchange(e) {
     console.log(e.type)
@@ -51,9 +70,45 @@ export default {
   },
   controltap(e) {
     console.log(e.controlId)
+  },
+  inputing(e) {
+    var self = this;
+    var input = e.detail.value;
+    console.log(self.data)
+    
+    // 调用接口  关键字列表
+    demo.getSuggestion({
+        keyword: input,
+        region: self.data.city,
+        success: function(res) {
+           self.setData({
+            addressList:res.data
+          }) 
+        },
+        fail: function(res) {
+            console.log(res);
+        },
+        complete: function(res) {
+            console.log(res);
+        }
+    });
   }
 }
 </script>
-
 <style lang="less">
+.search-box{
+  padding: 8px 5px;
+}
+.search{
+  border-radius: 3px;
+  border: 1px solid rgb(226, 234, 243);
+  height: 30px;
+  padding: 0px 5px
+}
+.preview{
+  font-size: 13px;
+  color: rgb(95, 101, 107);
+  padding:5px 10px;
+}
+
 </style>
